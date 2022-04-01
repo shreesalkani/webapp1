@@ -3,10 +3,10 @@ import pandas as pd
 import time
 import sys
 import subprocess
-#subprocess.check_call([sys.executable, '-m', 'pip', 'install','scikit-learn'])
-#subprocess.check_call([sys.executable, '-m', 'pip', 'install','openpyxl'])
-#subprocess.check_call([sys.executable, '-m', 'pip', 'install','xlsxwriter'])
-from sklearn.impute import KNNImputer
+subprocess.check_call([sys.executable, '-m', 'pip', 'install','scikit-learn'])
+subprocess.check_call([sys.executable, '-m', 'pip', 'install','openpyxl'])
+subprocess.check_call([sys.executable, '-m', 'pip', 'install','xlsxwriter'])
+
 from io import BytesIO
 from outlier import detect_outliers
 import Normal
@@ -33,7 +33,7 @@ if uploaded_files :
     if Missing_value:
         spin()
         st.write("Missing value selected")
-        missing_value_menu=st.sidebar.selectbox("Enter option to fill numeric values",["Mean","Median","Mode","KNN"])
+        missing_value_menu=st.sidebar.selectbox("Enter option to fill numeric values",["Mean","Median","Mode"])
         colums_options_number_missing = st.sidebar.multiselect('Select numeric columns to be filled for missing value',[l for l in df.columns if df[l].dtype in ["int64","float64"]],)
         colums_options_text_missing = st.sidebar.multiselect('Select text columns to be filled for missing value',[l for l in df.columns if df[l].dtype in ["object", "str"]], )
         dt = df.copy()
@@ -47,9 +47,7 @@ if uploaded_files :
                 df[p] = df[p].fillna(dt[p].median())
             elif missing_value_menu == "Mode":
                 df[p] = df[p].fillna(dt[p].mode().iloc[0])
-            else:
-                imputer = KNNImputer(n_neighbors=3)
-                df[[p]] = imputer.fit_transform(df[[p]])
+           
 
         for p in colums_options_text_missing:
             df[p]=df[p].fillna(" ")

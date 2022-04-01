@@ -5,6 +5,7 @@ subprocess.check_call([sys.executable, '-m', 'pip', 'install','scikit-learn'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install','openpyxl'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install','xlsxwriter'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install','pandas'])
+
 import streamlit as st
 import pandas as pd
 import time

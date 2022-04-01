@@ -2,3 +2,6 @@ streamlit<0.61.0
 pandas<0.25.3
 numpy<1.18.1
 scikit-learn<0.22.1
+sudo pip install --upgrade pip.
+sudo pip install --upgrade setuptools.
+pip install --no-index --find-links . pip-9.0.1-py2.py3-none-any.whl.
